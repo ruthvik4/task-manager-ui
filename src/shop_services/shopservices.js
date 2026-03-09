@@ -7,3 +7,5 @@ export const getItems = (params = {}) => axios.get(API_URL,{params});
 export const setItems = (item) => axios.post(API_URL,item);
 
 export const deleteItems = (id) => axios.delete(`${API_URL}/${id}`)
+
+export const updateItems = (id,item) => axios.put(`${API_URL}/${id}`,item);

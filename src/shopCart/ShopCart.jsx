@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { getItems, setItems, deleteItems } from "../shop_services/shopservices";
+import { getItems, setItems, deleteItems ,updateItems} from "../shop_services/shopservices";
 function ShopCart() {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
@@ -39,6 +39,15 @@ function ShopCart() {
     await deleteItems(id);
     setref(!refersh);
   }
+
+  async function updateItem(id){
+    await updateItems(id,{
+      title: quantity.current++,
+      description: "description 1",
+      completed: false,
+    });
+     setref(!refersh);
+  }
   return (
     <>
       <div>
@@ -52,8 +61,10 @@ function ShopCart() {
         {result
           ? result.map((r) => (
               <>
-
                 <li>{r.title}</li>
+                <div>
+                  <button onClick={() => updateItem(r.id)}>Update</button>
+                </div>
                 <div>
                   <button onClick={() => deleteItem(r.id)}>Remove</button>
                 </div>
@@ -71,6 +82,7 @@ function ShopCart() {
        :
         <>"0"</>
       }
+
     </>
   );
 }
