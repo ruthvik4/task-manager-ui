@@ -5,10 +5,10 @@ import {
   createTasks,
   deleteTasks,
   updateTasks,
-} from "./task_services/taskServices";
+} from "../task_services/taskServices";
 
 
-  function Tasks_manager(){
+  function Tasksmanager(){
 
 
 
@@ -134,4 +134,4 @@ const loadTasks = async () => {
   );
 }
 
-  export default Tasks_manager;
+  export default Tasksmanager;
